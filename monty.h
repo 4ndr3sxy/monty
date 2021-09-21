@@ -36,6 +36,8 @@ typedef struct instruction_s
     void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+
 void op_push(stack_t **stack, unsigned int line_number);
 
 void op_pall(stack_t **stack, unsigned int line_number);
@@ -44,4 +46,5 @@ void (*get_op_code(char *s))(stack_t **stack, unsigned int line);
 
 int digit_check(char *key);
 
+void tokenize_line(char *line, char **tokenize);
 #endif /* MONTY_H */
