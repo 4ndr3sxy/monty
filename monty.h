@@ -1,10 +1,24 @@
 #ifndef MONTY_H
 #define MONTY_H
-
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+
+/**
+ * struct stack_s - doubly linked list representation of a stack (or queue)
+ * @dataToSave: data to strack or queue
+ * *@lineTokenized: Data extract from FILE
+ *
+ * Description: struct to save global info
+ */
+typedef struct global_s
+{
+    int *dataToSave;
+    char *lineTokenized;
+    
+} global_t;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -36,13 +50,11 @@ typedef struct instruction_s
     void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-ssize_t getline(char **lineptr, size_t *n, FILE *stream);
-
 void op_push(stack_t **stack, unsigned int line_number);
 
 void op_pall(stack_t **stack, unsigned int line_number);
 
-void (*get_op_code(char *s))(stack_t **stack, unsigned int line);
+void (*get_op_code(global_t *dataStruct))(stack_t **stack, unsigned int line);
 
 int digit_check(char *key);
 
