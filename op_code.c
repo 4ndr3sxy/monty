@@ -1,23 +1,23 @@
 #include "monty.h"
 
 /**
- * op_add - add two numbers
- * @a: firts number.
- * @b: second number.
- * Return: add
+ * op_push - add new node to linked list
+ * @stack: double pointer to a double linked list
+ * @line_number: Counter of FILE lines.
+ * Return: Returnless
  */
 void op_push(stack_t **stack, unsigned int line_number)
 {
-	/*printf("En push\n");*/
 	line_number = 0;
+
 	add_dnodeint(stack, dataStruct.dataToSave);
 }
 
 /**
- * print_list - prints all elements of a list.
- * @h: pointer to header of linked list.
- *
- * Return: Number of nodes.
+ * op_pall - print a linked list
+ * @stack: double pointer to a double linked list
+ * @line_number: Counter of FILE lines.
+ * Return: Returnless
  */
 void op_pall(stack_t **stack, unsigned int line_number)
 {
@@ -31,6 +31,12 @@ void op_pall(stack_t **stack, unsigned int line_number)
 	}
 }
 
+/**
+ * op_pint - print node in top
+ * @stack: double pointer to a double linked list
+ * @line_number: Counter of FILE lines.
+ * Return: void
+ */
 void op_pint(stack_t **stack, unsigned int line_number)
 {
 	line_number = 0;
@@ -43,17 +49,31 @@ void op_pint(stack_t **stack, unsigned int line_number)
 	}
 }
 
+/**
+ * op_pop - delete node in top
+ * @stack: double pointer to a double linked list
+ * @line_number: Counter of FILE lines.
+ * Return: void
+ */
 void op_pop(stack_t **stack, unsigned int line_number)
 {
 	line_number = 0;
+
 	delete_dnodeint_at_index(stack, 0);
 }
 
+/**
+ * op_swap - swap the 2 nodes in top
+ * @stack: double pointer to a double linked list
+ * @line_number: Counter of FILE lines.
+ * Return: void
+ */
 void op_swap(stack_t **stack, unsigned int line_number)
 {
 	line_number = 0;
 	stack_t *copyHead = *stack;
 	stack_t *temp = copyHead->next;
+
 	copyHead->next = copyHead->next->next;
 	copyHead->prev = copyHead->next->prev;
 	temp->next = copyHead;
