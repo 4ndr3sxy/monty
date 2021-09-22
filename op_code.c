@@ -8,8 +8,9 @@
  */
 void op_push(stack_t **stack, unsigned int line_number)
 {
-	printf("5. %d\n", line_number);
-    	printf("6. ANDRÉS ESTUVO AQUí \n");
+	/*printf("En push\n");*/
+	line_number = 0;
+	add_dnodeint(stack, dataStruct.dataToSave);
 }
 
 /**
@@ -18,13 +19,140 @@ void op_push(stack_t **stack, unsigned int line_number)
  *
  * Return: Number of nodes.
  */
-void op_pall(stack_t **stackMonty, unsigned int line)
+void op_pall(stack_t **stack, unsigned int line_number)
 {
-	printf("7. ENTRÉ");
-	stack_t *temp = *stackMonty;
-	unsigned int i = line;
-	printf("line %d & stack %d \n", line, temp->n);
+	/*printf("En pall\n");*/
+	line_number = 0;
+	/*printf("Voy a imprimir\n");*/
+	stack_t *copyHead = *stack;
 
+	while (copyHead)
+	{
+		printf("%d\n", copyHead->n);
+		copyHead = copyHead->next;
+	}
+    /*
+	while (*stackMonty)
+	{
+		printf("%d\n", stackMonty->n);
+		stackMonty = stackMonty->next;
+		i++;
+	}
+    */
+}
+
+void op_pint(stack_t **stack, unsigned int line_number)
+{
+	/*printf("En pint\n");*/
+	line_number = 0;
+	/*printf("Voy a imprimir\n");*/
+	stack_t *copyHead = *stack;
+
+	while (copyHead)
+	{
+		printf("%d\n", copyHead->n);
+		break;
+	}
+}
+
+void op_pop(stack_t **stack, unsigned int line_number)
+{
+	/*printf("En pop\n");*/
+	line_number = 0;
+	delete_dnodeint_at_index(stack, 0);
+}
+
+void op_swap(stack_t **stack, unsigned int line_number)
+{
+	/*printf("En swap\n");*/
+	line_number = 0;
+	stack_t *copyHead = *stack;
+	stack_t *temp = copyHead->next;
+	copyHead->next = copyHead->next->next;
+	copyHead->prev = copyHead->next->prev;
+	temp->next = copyHead;
+	temp->prev = NULL;
+	*stack = temp;
+}
+
+
+/* Other file */
+void op_add(stack_t **stack, unsigned int line_number)
+{
+	/*printf("En add\n");*/
+	line_number = 0;
+	stack_t *temp = *stack;
+	(*stack)->next->n += (*stack)->n;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	free(temp);
+}
+
+void op_sub(stack_t **stack, unsigned int line_number)
+{
+	line_number = 0;
+	stack_t *temp = *stack;
+	(*stack)->next->n -= (*stack)->n;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	free(temp);
+}
+
+void op_div(stack_t **stack, unsigned int line_number)
+{
+	line_number = 0;
+	stack_t *temp = *stack;
+	(*stack)->next->n /= (*stack)->n;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	free(temp);
+}
+
+void op_mul(stack_t **stack, unsigned int line_number)
+{
+	line_number = 0;
+	stack_t *temp = *stack;
+	(*stack)->next->n *= (*stack)->n;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	free(temp);
+}
+
+void op_mod(stack_t **stack, unsigned int line_number)
+{
+	line_number = 0;
+	stack_t *temp = *stack;
+	(*stack)->next->n %= (*stack)->n;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	free(temp);
+}
+
+
+/* Other file  */
+void op_pchar(stack_t **stack, unsigned int line_number)
+{
+	line_number = 0;
+	printf("%c\n", (*stack)->n);
+}
+
+void op_pstr(stack_t **stack, unsigned int line_number)
+{
+	/*printf("En pall\n");*/
+	line_number = 0;
+	/*printf("Voy a imprimir\n");*/
+	stack_t *copyHead = *stack;
+
+	while (copyHead)
+	{
+		printf("%c", copyHead->n);
+		if (copyHead->next->n == 0)
+		{
+			break;
+		}
+		copyHead = copyHead->next;
+	}
+	printf("\n");
     /*
 	while (*stackMonty)
 	{

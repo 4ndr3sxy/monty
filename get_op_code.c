@@ -6,34 +6,54 @@
  * @s: character to validate simbol
  * Return: int
  */
-void (*get_op_code(global_t *dataStruct))(stack_t **stack, unsigned int line)
+void (*get_op_code())(stack_t **stack, unsigned int line)
 {
     int i = 0, j = 0;
+    int val = 0;
     char *tokenize[1024];
     instruction_t opCodes[] = {
         {"push", op_push},
         {"pall", op_pall},
+        {"pop", op_pop},
+        {"pint", op_pint},
+        {"swap", op_swap},
+        {"add", op_add},
+        {"sub", op_sub},
+        {"div", op_div},
+        {"mul", op_mul},
+        {"mod", op_mod},
+        {"pchar", op_pchar},
+        {"pstr", op_pstr},
         {NULL, NULL}};
-    tokenize_line(dataStruct->lineTokenized, tokenize);
-    
-    while (i < 2)
+
+    tokenize_line(dataStruct.lineTokenized, tokenize);
+
+    while (i < 12)
     {
         j = 0;
         while (tokenize[j])
         {
-            if (*opCodes[i].opcode == *tokenize[j])
+            //printf("%s == %s\n",opCodes[i].opcode, tokenize[j]);
+            /*if (opCodes[i].opcode == tokenize[j])*/
+
+            if (strcmp(opCodes[i].opcode, tokenize[j]) == 0)
             {
-                printf("1 . SIUUU\n");
-                dataStruct->dataToSave = (int*)tokenize[j+1];
-                /* printf("__&&%ls&&__\n", dataStruct->dataToSave); */
-                printf("2. _%s_\n", opCodes[1].opcode); 
+
+                //printf("3. SIUUU\n");
+                //printf("dataToSAve = %s\n", tokenize[j + 1]);
+
+                if (tokenize[j + 1])
+                    val = atoi(tokenize[j + 1]);
+
+                dataStruct.dataToSave = val;
+                //printf("¡¡¡dataToSAve = %d\n", dataStruct.dataToSave);
                 return (opCodes[i].f);
             }
             j++;
         }
         i++;
     }
-    printf("3. EFE\n");
+    /*printf("3. EFE\n");*/
     return (NULL);
 }
 /**
@@ -45,7 +65,7 @@ void (*get_op_code(global_t *dataStruct))(stack_t **stack, unsigned int line)
 void tokenize_line(char *line, char **tokenize)
 {
     int i = 0;
-    /* printf("Esto es line %s", line); */
+    //printf("Esto es line %s", line);
     tokenize[i] = strtok(line, " ");
     i++;
     while (line != NULL)

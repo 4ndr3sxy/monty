@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <unistd.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -15,10 +16,11 @@
  */
 typedef struct global_s
 {
-    int *dataToSave;
+    int dataToSave;
     char *lineTokenized;
-    
 } global_t;
+
+extern global_t dataStruct;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -54,9 +56,39 @@ void op_push(stack_t **stack, unsigned int line_number);
 
 void op_pall(stack_t **stack, unsigned int line_number);
 
-void (*get_op_code(global_t *dataStruct))(stack_t **stack, unsigned int line);
+void op_pop(stack_t **stack, unsigned int line_number);
+
+void op_pint(stack_t **stack, unsigned int line_number);
+
+void op_swap(stack_t **stack, unsigned int line_number);
+
+void op_add(stack_t **stack, unsigned int line_number);
+
+void op_sub(stack_t **stack, unsigned int line_number);
+
+void op_div(stack_t **stack, unsigned int line_number);
+
+void op_mul(stack_t **stack, unsigned int line_number);
+
+void op_mod(stack_t **stack, unsigned int line_number);
+
+void op_pchar(stack_t **stack, unsigned int line_number);
+
+void op_pstr(stack_t **stack, unsigned int line_number);
+
+void (*get_op_code())(stack_t **stack, unsigned int line);
 
 int digit_check(char *key);
 
 void tokenize_line(char *line, char **tokenize);
+
+void change_last_character(char *valueTokenize);
+
+void add_dnodeint(stack_t **head, int n);
+
+void delete_dnodeint_at_index(stack_t **head, unsigned int index);
+
+
+void free_dlistint(stack_t *head);
+
 #endif /* MONTY_H */
