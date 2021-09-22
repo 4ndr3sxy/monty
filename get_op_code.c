@@ -7,9 +7,9 @@
  */
 void (*get_op_code())(stack_t **stack, unsigned int line)
 {
-	int i = 0, j = 0;
+	int i = 0, j = 0, k = 0;
 	int val = 0;
-	char tok = 1;
+	int tok = 0;
 	char *tokenize[1024];
 	instruction_t opCodes[] = {
 		{"push", op_push},
@@ -33,21 +33,31 @@ void (*get_op_code())(stack_t **stack, unsigned int line)
 		j = 0;
 		while (tokenize[j])
 		{
+			if (tokenize[j + 1])
+			{
+				while (tokenize[j + 1][k])
+				{
+					if ((tokenize[j + 1][k] < 48 || tokenize[j + 1][k] > 57)
+					&& tokenize[j + 1][k] != 45)
+					{
+						tok = 1;
+						break;
+					}
+					k++;
+				}
+			}
 			if (strcmp(opCodes[i].opcode, tokenize[j]) == 0)
 			{
-				if (tokenize[j + 1])
-					tok = (char)*tokenize[j + 1];
-
-				if (tokenize[j + 1] && tok != '0')
+				if (tokenize[j + 1] && !tok)
 				{
 					val = atoi(tokenize[j + 1]);
-					if (val == 0)
-						dataStruct.valDataToSave = 1;
-					else
-						dataStruct.dataToSave = val;
+					dataStruct.dataToSave = val;
 				}
 				else
-					dataStruct.dataToSave = 0;
+				{
+					dataStruct.valDataToSave = 1;
+					tok = 0;
+				}
 				return (opCodes[i].f);
 			}
 			j++;
