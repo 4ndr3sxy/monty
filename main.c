@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(1);
 	}
-	while ((int)getline(&c, &sizeC, fp) != -1)
+	while (getline(&c, &sizeC, fp) != -1)
 	{
 		change_last_character(c);
 		dataStruct.lineTokenized = c;

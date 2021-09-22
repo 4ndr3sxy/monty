@@ -8,9 +8,11 @@
  */
 void op_push(stack_t **stack, unsigned int line_number)
 {
+
 	if (dataStruct.valDataToSave)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_dlistint(*stack);
 		exit(1);
 	}
 
@@ -53,6 +55,7 @@ void op_pint(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		free_dlistint(*stack);
 		exit(1);
 	}
 	copyHead = *stack;
@@ -74,6 +77,7 @@ void op_pop(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_dlistint(*stack);
 		exit(1);
 	}
 
