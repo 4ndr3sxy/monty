@@ -11,6 +11,7 @@
  * struct global_s - doubly linked list representation of a stack (or queue)
  * @dataToSave: data to strack or queue
  * *@lineTokenized: Data extract from FILE
+ * @valDataToSave: Boolean validator
  *
  * Description: struct to save global info
  */
