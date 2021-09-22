@@ -40,6 +40,7 @@ void (*get_op_code())(stack_t **stack, unsigned int line)
 					if ((tokenize[j + 1][k] < 48 || tokenize[j + 1][k] > 57)
 					&& tokenize[j + 1][k] != 45)
 					{
+						printf("ENTRO");
 						tok = 1;
 						break;
 					}
@@ -56,8 +57,8 @@ void (*get_op_code())(stack_t **stack, unsigned int line)
 				else
 				{
 					dataStruct.valDataToSave = 1;
-					tok = 0;
 				}
+				tok = 0;
 				return (opCodes[i].f);
 			}
 			j++;

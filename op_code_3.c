@@ -8,6 +8,8 @@
  */
 void op_pchar(stack_t **stack, unsigned int line_number)
 {
+	dataStruct.valDataToSave = 0;
+
 	if (!(*stack))
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
@@ -33,6 +35,7 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *copyHead = NULL;
 	(void)line_number;
+	dataStruct.valDataToSave = 0;
 
 	if ((*stack))
 		copyHead = *stack;

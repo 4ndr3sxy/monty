@@ -30,6 +30,7 @@ void op_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *copyHead = NULL;
 	(void)line_number;
+	dataStruct.valDataToSave = 0;
 
 	if (*stack)
 	{
@@ -52,6 +53,7 @@ void op_pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *copyHead = NULL;
 
+	dataStruct.valDataToSave = 0;
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
@@ -74,6 +76,8 @@ void op_pint(stack_t **stack, unsigned int line_number)
  */
 void op_pop(stack_t **stack, unsigned int line_number)
 {
+	dataStruct.valDataToSave = 0;
+
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
@@ -95,6 +99,7 @@ void op_swap(stack_t **stack, unsigned int line_number)
 	stack_t *copyHead = NULL;
 	stack_t *temp = NULL;
 
+	dataStruct.valDataToSave = 0;
 	if (!(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
