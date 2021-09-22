@@ -8,7 +8,7 @@
 #include <unistd.h>
 
 /**
- * struct stack_s - doubly linked list representation of a stack (or queue)
+ * struct global_s - doubly linked list representation of a stack (or queue)
  * @dataToSave: data to strack or queue
  * *@lineTokenized: Data extract from FILE
  *
@@ -16,8 +16,8 @@
  */
 typedef struct global_s
 {
-    int dataToSave;
-    char *lineTokenized;
+	int dataToSave;
+	char *lineTokenized;
 } global_t;
 
 extern global_t dataStruct;
@@ -33,9 +33,9 @@ extern global_t dataStruct;
  */
 typedef struct stack_s
 {
-    int n;
-    struct stack_s *prev;
-    struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -48,8 +48,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-    char *opcode;
-    void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 void op_push(stack_t **stack, unsigned int line_number);
@@ -87,7 +87,6 @@ void change_last_character(char *valueTokenize);
 void add_dnodeint(stack_t **head, int n);
 
 void delete_dnodeint_at_index(stack_t **head, unsigned int index);
-
 
 void free_dlistint(stack_t *head);
 
