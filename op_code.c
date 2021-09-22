@@ -21,9 +21,7 @@ void op_push(stack_t **stack, unsigned int line_number)
  */
 void op_pall(stack_t **stack, unsigned int line_number)
 {
-	/*printf("En pall\n");*/
 	line_number = 0;
-	/*printf("Voy a imprimir\n");*/
 	stack_t *copyHead = *stack;
 
 	while (copyHead)
@@ -31,21 +29,11 @@ void op_pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", copyHead->n);
 		copyHead = copyHead->next;
 	}
-    /*
-	while (*stackMonty)
-	{
-		printf("%d\n", stackMonty->n);
-		stackMonty = stackMonty->next;
-		i++;
-	}
-    */
 }
 
 void op_pint(stack_t **stack, unsigned int line_number)
 {
-	/*printf("En pint\n");*/
 	line_number = 0;
-	/*printf("Voy a imprimir\n");*/
 	stack_t *copyHead = *stack;
 
 	while (copyHead)
@@ -57,14 +45,12 @@ void op_pint(stack_t **stack, unsigned int line_number)
 
 void op_pop(stack_t **stack, unsigned int line_number)
 {
-	/*printf("En pop\n");*/
 	line_number = 0;
 	delete_dnodeint_at_index(stack, 0);
 }
 
 void op_swap(stack_t **stack, unsigned int line_number)
 {
-	/*printf("En swap\n");*/
 	line_number = 0;
 	stack_t *copyHead = *stack;
 	stack_t *temp = copyHead->next;
@@ -79,7 +65,6 @@ void op_swap(stack_t **stack, unsigned int line_number)
 /* Other file */
 void op_add(stack_t **stack, unsigned int line_number)
 {
-	/*printf("En add\n");*/
 	line_number = 0;
 	stack_t *temp = *stack;
 	(*stack)->next->n += (*stack)->n;
@@ -138,9 +123,7 @@ void op_pchar(stack_t **stack, unsigned int line_number)
 
 void op_pstr(stack_t **stack, unsigned int line_number)
 {
-	/*printf("En pall\n");*/
 	line_number = 0;
-	/*printf("Voy a imprimir\n");*/
 	stack_t *copyHead = *stack;
 
 	while (copyHead)
@@ -153,12 +136,4 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 		copyHead = copyHead->next;
 	}
 	printf("\n");
-    /*
-	while (*stackMonty)
-	{
-		printf("%d\n", stackMonty->n);
-		stackMonty = stackMonty->next;
-		i++;
-	}
-    */
 }
