@@ -18,6 +18,7 @@ typedef struct global_s
 {
 	int dataToSave;
 	char *lineTokenized;
+	int valDataToSave;
 } global_t;
 
 extern global_t dataStruct;
