@@ -8,7 +8,16 @@
  */
 void op_pchar(stack_t **stack, unsigned int line_number)
 {
-	line_number = 0;
+	if (!(*stack))
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		exit(1);
+	}
+	if ((*stack)->n < 0 || (*stack)->n > 255)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		exit(1);
+	}
 	printf("%c\n", (*stack)->n);
 }
 
@@ -20,13 +29,16 @@ void op_pchar(stack_t **stack, unsigned int line_number)
  */
 void op_pstr(stack_t **stack, unsigned int line_number)
 {
-	line_number = 0;
-	stack_t *copyHead = *stack;
+	stack_t *copyHead = NULL;
+	(void)line_number;
 
+	if ((*stack))
+		copyHead = *stack;
 	while (copyHead)
 	{
 		printf("%c", copyHead->n);
-		if (copyHead->next->n == 0)
+		if (copyHead->next->n == 0
+		|| copyHead->next->n < 0 || copyHead->next->n > 255)
 		{
 			break;
 		}

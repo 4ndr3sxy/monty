@@ -34,16 +34,24 @@ void (*get_op_code())(stack_t **stack, unsigned int line)
 		{
 			if (strcmp(opCodes[i].opcode, tokenize[j]) == 0)
 			{
-				if (tokenize[j + 1])
+				char tok = (char) *tokenize[j + 1];
+				if (tokenize[j + 1] && tok != '0')
+				{
 					val = atoi(tokenize[j + 1]);
-
-				dataStruct.dataToSave = val;
+					if (val == 0)
+						dataStruct.valDataToSave = 1;
+					else
+						dataStruct.dataToSave = val;
+				}
+				else
+					dataStruct.dataToSave = 0;
 				return (opCodes[i].f);
 			}
 			j++;
 		}
 		i++;
 	}
+	
 	return (NULL);
 }
 
