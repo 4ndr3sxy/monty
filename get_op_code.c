@@ -9,6 +9,7 @@ void (*get_op_code())(stack_t **stack, unsigned int line)
 {
 	int i = 0, j = 0;
 	int val = 0;
+	char tok = 1;
 	char *tokenize[1024];
 	instruction_t opCodes[] = {
 		{"push", op_push},
@@ -34,7 +35,9 @@ void (*get_op_code())(stack_t **stack, unsigned int line)
 		{
 			if (strcmp(opCodes[i].opcode, tokenize[j]) == 0)
 			{
-				char tok = (char) *tokenize[j + 1];
+				if (tokenize[j + 1])
+					tok = (char)*tokenize[j + 1];
+
 				if (tokenize[j + 1] && tok != '0')
 				{
 					val = atoi(tokenize[j + 1]);
@@ -51,7 +54,7 @@ void (*get_op_code())(stack_t **stack, unsigned int line)
 		}
 		i++;
 	}
-	
+
 	return (NULL);
 }
 

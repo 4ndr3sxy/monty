@@ -24,5 +24,4 @@ void add_dnodeint(stack_t **head, int n)
 		(*head)->prev = newNode;
 
 	*head = newNode;
-	return;
 }

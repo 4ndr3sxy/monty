@@ -49,5 +49,4 @@ void delete_dnodeint_at_index(stack_t **head, unsigned int index)
 		}
 		countIndex++, copyNode = copyNode->next;
 	}
-	return;
 }
