@@ -20,6 +20,7 @@ typedef struct global_s
 	int dataToSave;
 	char *lineTokenized;
 	int valDataToSave;
+	char *opCodeNoExist;
 } global_t;
 
 extern global_t dataStruct;
@@ -77,6 +78,10 @@ void op_mod(stack_t **stack, unsigned int line_number);
 void op_pchar(stack_t **stack, unsigned int line_number);
 
 void op_pstr(stack_t **stack, unsigned int line_number);
+
+void op_none(stack_t **stack, unsigned int line_number);
+
+void op_rotl(stack_t **stack, unsigned int line_number);
 
 void (*get_op_code())(stack_t **stack, unsigned int line);
 

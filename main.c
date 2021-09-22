@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 	unsigned int line = 1;
 	size_t sizeC = 0;
 	stack_t *stackMonty = NULL;
-	void (*cp_get_op_code)(stack_t **stack, unsigned int line);
+	void (*cp_get_op_code)(stack_t * *stack, unsigned int line);
 
 	if (argc != 2)
 	{
@@ -48,12 +48,17 @@ int main(int argc, char *argv[])
 	{
 		change_last_character(c);
 		dataStruct.lineTokenized = c;
-		if (c[0] != '#')
+		if (dataStruct.lineTokenized[0])
 		{
 			cp_get_op_code = (*get_op_code)();
 			if (cp_get_op_code)
 			{
 				(*cp_get_op_code)(&stackMonty, line);
+			}
+			else
+			{
+				fprintf(stderr, "L%d: unknown instruction %s\n", line, dataStruct.opCodeNoExist);
+				exit(1);
 			}
 		}
 		line++;
