@@ -53,7 +53,8 @@ int main(int argc, char *argv[])
 	FILE *fp = NULL;
 	char *c = NULL;
 	unsigned int line = 1, valLine = 0;
-	size_t sizeC = 0, stack_t *stackMonty = NULL;
+	size_t sizeC = 0;
+	stack_t *stackMonty = NULL;
 	void (*cp_get_op_code)(stack_t **stack, unsigned int line);
 
 	if (argc != 2)
@@ -69,8 +70,7 @@ int main(int argc, char *argv[])
 	}
 	while (getline(&c, &sizeC, fp) != -1)
 	{
-		valLine = 0;
-		change_last_character(c), dataStruct.lineTokenized = c;
+		valLine = 0, change_last_character(c), dataStruct.lineTokenized = c;
 		valLine = validate_line(dataStruct.lineTokenized);
 		if (!valLine)
 		{
