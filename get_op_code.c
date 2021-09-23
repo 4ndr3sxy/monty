@@ -39,7 +39,8 @@ void (*get_op_code())(stack_t **stack, unsigned int line)
 			{
 				while (tokenize[j + 1][k])
 				{
-					if ((tokenize[j + 1][k] < 48 || tokenize[j + 1][k] > 57) && tokenize[j + 1][k] != 45)
+					if ((tokenize[j + 1][k] < 48 || tokenize[j + 1][k] > 57)
+					&& tokenize[j + 1][k] != 45)
 					{
 						tok = 1;
 						break;
@@ -47,7 +48,8 @@ void (*get_op_code())(stack_t **stack, unsigned int line)
 					k++;
 				}
 			}
-			if (strcmp(opCodes[i].opcode, tokenize[j]) == 0 || (*opCodes[i].opcode == '#' && *tokenize[0] == '#'))
+			if (strcmp(opCodes[i].opcode, tokenize[j]) == 0 ||
+			(*opCodes[i].opcode == '#' && *tokenize[0] == '#'))
 			{
 				if (tokenize[j + 1] && !tok)
 				{
@@ -67,13 +69,6 @@ void (*get_op_code())(stack_t **stack, unsigned int line)
 		j = 0;
 		i++;
 	}
-	/*
-	if ((tokenize[j + 1][k] < 48 || tokenize[j + 1][k] > 57) && tokenize[j + 1][k] != 45)
-	{
-		tok = 1;
-		break;
-	}
-	*/
 	dataStruct.opCodeNoExist = tokenize[0];
 	return (NULL);
 }

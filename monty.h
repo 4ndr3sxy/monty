@@ -12,6 +12,7 @@
  * @dataToSave: data to strack or queue
  * *@lineTokenized: Data extract from FILE
  * @valDataToSave: Boolean validator
+ * @opCodeNoExist: command no exist
  *
  * Description: struct to save global info
  */

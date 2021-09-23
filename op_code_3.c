@@ -46,7 +46,8 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 		{
 			printf("%c", copyHead->n);
 		}
-		if (!copyHead->next || copyHead->next->n == 0 || copyHead->next->n < 0 || copyHead->next->n > 127)
+		if (!copyHead->next || copyHead->next->n == 0 ||
+		copyHead->next->n < 0 || copyHead->next->n > 127)
 		{
 			break;
 		}
@@ -56,7 +57,7 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * op_pstr - function to print a string
+ * op_none - Nothing
  * @stack: double pointer to a double linked list
  * @line_number: counter of FILE lines.
  * Return: None
@@ -68,6 +69,12 @@ void op_none(stack_t **stack, unsigned int line_number)
 	dataStruct.valDataToSave = 0;
 }
 
+/**
+ * op_rotl - round the top to a bottom
+ * @stack: double pointer to a double linked list
+ * @line_number: counter of FILE lines.
+ * Return: None
+ */
 void op_rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
